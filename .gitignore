@@ -1,0 +1,46 @@
+# ===== macOS =====
+.DS_Store
+
+# ===== Xcode / Swift =====
+# User-specific Xcode state (window layout, breakpoints, personal schemes,
+# UI state). The xcuserdata directory exists in multiple nested places —
+# this glob catches all of them.
+**/xcuserdata/
+*.xcuserstate
+
+# Build outputs
+build/
+DerivedData/
+*.ipa
+*.dSYM
+*.dSYM.zip
+*.xcarchive
+
+# Swift Package Manager
+.swiftpm/
+.build/
+Package.resolved
+Packages/
+
+# CocoaPods (unused here, listed defensively)
+Pods/
+
+# fastlane (unused here, listed defensively)
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output
+
+# ===== Editors / misc =====
+*.swp
+*.swo
+*~
+.vscode/
+.idea/
+.claude/
+
+# ===== Project-local scratch =====
+# Personal notes / requirements drafts — not part of the shipped app.
+cinstructions/
+# Working copy of the app icon source; the in-app asset lives in Assets.xcassets.
+logo1-1.png
