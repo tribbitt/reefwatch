@@ -32,7 +32,7 @@ a reef crosses a threshold of heating.
 2. Project → target `reefwatch` → **Signing & Capabilities** → pick a Team
    from the dropdown (the committed project file leaves `DEVELOPMENT_TEAM`
    empty, so you must set this before building). Bundle identifier defaults
-   to `com.tribbitt.reefwatch` — change it to something unique under your
+   to `com.example.reefwatch` — change it to something unique under your
    account.
 3. Select a destination (iPhone simulator or your connected device) and ⌘R.
 
@@ -79,6 +79,6 @@ Products. College Park, Maryland, USA: NOAA Coral Reef Watch.
 
 ## Notes
 
-- Bundle identifier (`com.tribbitt.reefwatch`) is set in the `.pbxproj`. Maybe change this.
+- Bundle identifier (`com.example.reefwatch`) is set in the `.pbxproj`. Maybe change this.
 - The app icon master is `logo1-1.png` at the project root. Three derived
   variants (`AppIcon-1024-light/dark/tinted.png`) live in the asset catalog.
