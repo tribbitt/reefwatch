@@ -80,5 +80,3 @@ Products. College Park, Maryland, USA: NOAA Coral Reef Watch.
 ## Notes
 
 - Bundle identifier (`com.example.reefwatch`) is set in the `.pbxproj`. Maybe change this.
-- The app icon master is `logo1-1.png` at the project root. Three derived
-  variants (`AppIcon-1024-light/dark/tinted.png`) live in the asset catalog.
