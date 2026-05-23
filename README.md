@@ -1,38 +1,21 @@
 # reefwatch
 
-A SwiftUI iOS app that surfaces the world's coral reefs currently under thermal
-stress, ranked by NOAA Coral Reef Watch's 5 km daily product.
+A SwiftUI iOS app that displays the world's coral reefs currently under thermal
+stress using NOAA's virtual stations.
 
-Tap a reef to see its 120-day DHW and SST-anomaly history. Switch to the map
-tab for a global overview where each reef pin is colored by its current
-bleaching-alert level. Enable optional local notifications to get alerted when
-any tracked reef crosses a Degree Heating Week threshold upward.
+Tap a reef to see its DHW and SST-anomaly history. Switch to the map
+tab for a map view. Enable optional notifications to get know when
+a reef crosses a threshold of heating.
 
 ## Features
 
-- **Ranked panel list** of ~156 reefs across every major coral biogeographic
+- **Ranked panel list** of ~200+ reefs across every major coral biogeographic
   region (Coral Triangle, Caribbean, Red Sea, Pacific Islands, etc.). Sort by
-  current DHW or by thermal-stress streak length.
-- **Two-step + adaptive load** — priority reefs render first (~5 s), the rest
-  stream in progressively. ERDDAP requests run with 16-way concurrency that
-  auto-falls back to 8 if NOAA throttles. Disk-cached results mean subsequent
-  launches under 6 hours just paint from cache — no network.
-- **Per-reef detail** — Swift Charts line graph of DHW and SSTA over the
-  configurable history window, with NOAA Alert Level threshold rules.
-- **Map tab** — MapKit world map with stress-colored pins.
-- **High-DHW visualization** — matches NOAA's expanded bleaching-alert scale:
-  - Alert Levels 1-4 get colored borders (yellow → red).
-  - Alert 5 (≥ 20 DHW) gets a glowing orange border.
-  - DHW ≥ 30 inverts to a black tile with orange text.
-  - DHW > 50 collapses to a huge red number — exceeded-scale display.
-  - Stacked gradient bars extend the scale past 20 in two-bar / three-bar
-    layouts at DHW 20-40 and 40-60.
-- **Auto-extended streaks** — when a reef's stress streak fills the entire
-  loaded history window, the app keeps fetching older 60-day chunks (up to a
-  2-year cap) to surface the true streak length.
-- **Local notifications** — optional, default off. Crossings of a user-chosen
-  threshold (Warning, Alert 1, 2, 3, 4, 5) fire a `UNUserNotification`
-  immediately after each refresh.
+  current DHW or by thermal-stress streak.
+- **Per-reef details** — Line graph of DHW and SSTA over the configurable
+  history window, with NOAA Alert Level threshold rules.
+- **Map tab** — World map with colored pins representing reefs.
+- **Optional notifications** — Default off (yay)
 
 ## Requirements
 
@@ -54,7 +37,7 @@ any tracked reef crosses a Degree Heating Week threshold upward.
 3. Select a destination (iPhone simulator or your connected device) and ⌘R.
 
 The first cold launch fetches ~156 daily time-series from NOAA's PacIOOS
-ERDDAP node and takes 15-30 s. Subsequent launches restore from cache
+ERDDAP node and takes a moment. Subsequent launches restore from cache
 instantly and only re-fetch if the cache is older than 6 hours.
 
 ## Architecture
@@ -87,7 +70,7 @@ and SST anomaly (°C). NOAA's published bleaching-alert scale and HotSpot /
 DHW thresholds are mirrored verbatim in `NOAAAlertLevel.classify(dhw:sstAnomaly:)`
 and `AlertLevelReferenceSheet`.
 
-Citation: NOAA Coral Reef Watch. 2018, updated daily. NOAA Coral Reef Watch
+Source: NOAA Coral Reef Watch. 2018, updated daily. NOAA Coral Reef Watch
 Version 3.1 Daily Global 5 km Satellite Sea Surface Temperature and DHW
 Products. College Park, Maryland, USA: NOAA Coral Reef Watch.
 
@@ -96,13 +79,6 @@ Products. College Park, Maryland, USA: NOAA Coral Reef Watch.
 
 ## Notes
 
-- Bundle identifier (`com.tribbitt.reefwatch`) is set in the `.pbxproj`. Change
-  it before publishing to App Store Connect.
-- The `cinstructions/` directory holds a plain-text spec note describing the
-  scale-exceeded visualization rules; safe to delete after reading.
+- Bundle identifier (`com.tribbitt.reefwatch`) is set in the `.pbxproj`. Maybe change this.
 - The app icon master is `logo1-1.png` at the project root. Three derived
   variants (`AppIcon-1024-light/dark/tinted.png`) live in the asset catalog.
-
-## License
-
-No license declared yet — add one before sharing publicly.
